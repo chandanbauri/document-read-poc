@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colladome</title>
+</head>
+
+<body>
+    <dl>
+        <dt>Uploaded Details</dt>
+        <dd>
+            <dl id="uploaded-details">
+            </dl>
+        </dd>
+    </dl>
+</body>
+<script>
+    let Details = JSON.parse('<%- details.data %>');
+    let listEl = document.getElementById('uploaded-details');
+
+    for (let [key, value] of Object.entries(Details)) {
+        let dt = document.createElement('dt');
+        let dd = document.createElement('dd');
+
+        dt.innerHTML = key;
+        dd.innerHTML = value;
+
+        listEl.appendChild(dt);
+        listEl.appendChild(dd);
+    }
+
+</script>
+<style>
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #151515;
+        margin: 0px;
+        padding: 0px
+    }
+
+    body>dl {
+        background-color: #1f1f1f;
+        padding: 2rem 5rem;
+        border-radius: .5em;
+
+        box-shadow: #00000030 5px 4px 10px;
+        color: #FFF;
+    }
+
+    body>dl>dt {
+        font-weight: bold;
+        font-size: 25px;
+        font-family: sans-serif;
+    }
+
+    body dl dt {
+        margin-block: .5rem;
+    }
+
+    body dl dd {
+        font-family: sans-serif;
+        font-weight: 600;
+    }
+</style>
+
+</html>
